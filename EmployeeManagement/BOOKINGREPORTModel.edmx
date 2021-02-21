@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BOOKINGModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BOOKING.dbo.Booking' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="Reservation No" />
+            <PropertyRef Name="Customer Name" />
+            <PropertyRef Name="Driver ID" />
+            <PropertyRef Name="Reservation Date" />
+            <PropertyRef Name="Vehicle Number" />
+          </Key>
+          <Property Name="Reservation No" Type="int" Nullable="false" />
+          <Property Name="Customer Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Driver ID" Type="int" Nullable="false" />
+          <Property Name="Reservation Date" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Vehicle Number" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="BOOKINGModelStoreContainer">
+          <EntitySet Name="Booking" EntityType="Self.Booking" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Booking].[Reservation No] AS [Reservation No], 
+    [Booking].[Customer Name] AS [Customer Name], 
+    [Booking].[Driver ID] AS [Driver ID], 
+    [Booking].[Reservation Date] AS [Reservation Date], 
+    [Booking].[Vehicle Number] AS [Vehicle Number]
+    FROM [dbo].[Booking] AS [Booking]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BOOKINGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="Reservation_No" />
+            <PropertyRef Name="Customer_Name" />
+            <PropertyRef Name="Driver_ID" />
+            <PropertyRef Name="Reservation_Date" />
+            <PropertyRef Name="Vehicle_Number" />
+          </Key>
+          <Property Name="Reservation_No" Type="Int32" Nullable="false" />
+          <Property Name="Customer_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Driver_ID" Type="Int32" Nullable="false" />
+          <Property Name="Reservation_Date" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Vehicle_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="BOOKINGREPORTEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bookings" EntityType="Self.Booking" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BOOKINGModelStoreContainer" CdmEntityContainer="BOOKINGREPORTEntities">
+          <EntitySetMapping Name="Bookings">
+            <EntityTypeMapping TypeName="BOOKINGModel.Booking">
+              <MappingFragment StoreEntitySet="Booking">
+                <ScalarProperty Name="Reservation_No" ColumnName="Reservation No" />
+                <ScalarProperty Name="Customer_Name" ColumnName="Customer Name" />
+                <ScalarProperty Name="Driver_ID" ColumnName="Driver ID" />
+                <ScalarProperty Name="Reservation_Date" ColumnName="Reservation Date" />
+                <ScalarProperty Name="Vehicle_Number" ColumnName="Vehicle Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
